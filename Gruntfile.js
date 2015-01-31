@@ -43,7 +43,12 @@ module.exports = function(grunt) {
 
 		autoprefixer: {
 			options: {
-				browsers: ['last 4 versions', 'ie 9', 'ios 6', 'android 4']
+				browsers: [
+					'last 4 versions',
+					'ie 9',
+					'ios 6',
+					'android 4'
+				]
 			},
 			style: {
 				src: 'css/*.css'
@@ -53,7 +58,21 @@ module.exports = function(grunt) {
 		rsync: {
 			options: {
 				args: ["--verbose"],
-				exclude: [".git", ".gitignore", ".DS_Store", "style.max.css", "*.css.map", "<%= pkg.name %>.js", "js/src", "node_modules", "scss", "Gruntfile.js", "package.json", ".sass-cache", "<%= pkg.name %>"],
+				exclude: [
+					'.git',
+					'.gitignore',
+					'.DS_Store',
+					'style.max.css',
+					'*.css.map',
+					'<%= pkg.name %>.js',
+					'js/src',
+					'node_modules',
+					'scss',
+					'Gruntfile.js',
+					'package.json',
+					'.sass-cache',
+					'<%= pkg.name %>'
+				],
 				recursive: true
 			},
 			dist: {
@@ -100,12 +119,34 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-rsync');
 
 	// Define default task(s).
-	grunt.registerTask('default', ['sass', 'autoprefixer', 'scripts', 'watch']);
+	grunt.registerTask(
+		'default',
+		[
+			'sass',
+			'autoprefixer',
+			'scripts',
+			'watch'
+		]
+	);
 
 	// Define Task to concatenate and uglify only the Javascripts
-	grunt.registerTask('scripts', ['concat', 'uglify']);
+	grunt.registerTask(
+		'scripts',
+		[
+			'concat',
+			'uglify'
+		]
+	);
 
 	// Define the final Build/Deploy Task to write the final Theme for distribution
-	grunt.registerTask('build', ['sass', 'autoprefixer', 'concat', 'uglify', 'rsync']);
-
+	grunt.registerTask(
+		'build',
+		[
+			'sass',
+			'autoprefixer',
+			'concat',
+			'uglify',
+			'rsync'
+		]
+	);
 };
