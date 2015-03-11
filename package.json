@@ -1,9 +1,9 @@
 {
 	"name": "PROJECT_NAME",
 	"description": "PROJECT_DESCRIPTION",
-	"version": "VERSION_NUMBER",
-	"author": "Claudio Rimann",
-	"homepage": "http://www.claudiorimann.ch",
+	"version": "0.0.1",
+	"author": "Florian Ziegler",
+	"homepage": "http://florianziegler.de/",
 	"private": true,
 
 	"devDependencies": {
