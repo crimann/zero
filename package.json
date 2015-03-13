@@ -2,8 +2,8 @@
 	"name": "PROJECT_NAME",
 	"description": "PROJECT_DESCRIPTION",
 	"version": "0.0.1",
-	"author": "Florian Ziegler",
-	"homepage": "http://florianziegler.de/",
+	"author": "PROJECT_AUTHOR",
+	"homepage": "PROJECT_HOMEPAGE",
 	"private": true,
 
 	"devDependencies": {
@@ -12,6 +12,7 @@
 		"grunt-contrib-uglify":     "~0.7.0",
 		"grunt-contrib-watch":      "~0.6.1",
 		"grunt-contrib-sass":       "~0.8.1",
+		"grunt-respimg":            "~0.1.0",
 		"grunt-autoprefixer":       "~2.2.0",
 		"grunt-rsync":              "~0.6.2"
 	}
