@@ -21,22 +21,13 @@ module.exports = function(grunt) {
 		},
 
 		sass: {
-			maximized: {
-				options: {
-					style: 'expanded',
-					quiet: true
-				},
+			options: {
+				outputStyle: 'compressed',
+				sourceMap: true
+			},
+			build: {
 				files: {
 					'css/style.max.css': 'scss/main.scss'
-				}
-			},
-			minified: {
-				options: {
-					style: 'compressed',
-					quiet: true
-				},
-				files: {
-					'css/style.min.css': 'scss/main.scss'
 				}
 			}
 		},
@@ -133,7 +124,7 @@ module.exports = function(grunt) {
 	// Load the required Plugins for our tasks
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-respimg');
 	grunt.loadNpmTasks('grunt-contrib-watch');
