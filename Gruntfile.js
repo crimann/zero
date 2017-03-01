@@ -21,22 +21,13 @@ module.exports = function(grunt) {
 		},
 
 		sass: {
-			maximized: {
-				options: {
-					style: 'expanded',
-					quiet: true
-				},
+			options: {
+				outputStyle: 'compressed',
+				sourceMap: true
+			},
+			build: {
 				files: {
 					'css/style.max.css': 'scss/main.scss'
-				}
-			},
-			minified: {
-				options: {
-					style: 'compressed',
-					quiet: true
-				},
-				files: {
-					'css/style.min.css': 'scss/main.scss'
 				}
 			}
 		},
@@ -55,6 +46,25 @@ module.exports = function(grunt) {
 			}
 		},
 
+		respimg: {
+			options: {
+				widths: [
+					320,
+					640,
+					1280
+				]
+			},
+			default: {
+				files: [{
+					expand: true,
+					cwd: 'src/images/',
+					src: ['**.{gif,jpg,png,svg}'],
+					dest: 'images/'
+				}]
+				// Target-specific file lists go here. 
+			}
+		},
+
 		rsync: {
 			options: {
 				args: ["--verbose"],
@@ -67,6 +77,7 @@ module.exports = function(grunt) {
 					'<%= pkg.name %>.js',
 					'js/src',
 					'node_modules',
+					'src',
 					'scss',
 					'Gruntfile.js',
 					'package.json',
@@ -113,8 +124,9 @@ module.exports = function(grunt) {
 	// Load the required Plugins for our tasks
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-respimg');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-rsync');
 
@@ -138,6 +150,14 @@ module.exports = function(grunt) {
 		]
 	);
 
+	// Define Task to create image versions
+	grunt.registerTask(
+		'images',
+		[
+			'respimg'
+		]
+	);
+
 	// Define the final Build/Deploy Task to write the final Theme for distribution
 	grunt.registerTask(
 		'build',
@@ -146,6 +166,7 @@ module.exports = function(grunt) {
 			'autoprefixer',
 			'concat',
 			'uglify',
+			'respimg',
 			'rsync'
 		]
 	);
